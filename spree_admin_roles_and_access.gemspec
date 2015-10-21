@@ -2,22 +2,21 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_admin_roles_and_access'
-  s.version     = '1.3.0'
+  s.version     = '3.0.4'
   s.summary     = 'Dynamically defines roles and grants it permissions'
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.0.0'
   s.files = Dir['LICENSE', 'README.md', 'app/**/*', 'config/**/*', 'lib/**/*', 'db/**/*']
 
   s.author    = "Nishant 'CyRo' Tuteja"
   s.email     = 'info@vinsol.com'
   s.homepage  = 'http://vinsol.com'
-  
+
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.4.0.rc3'
-  s.add_dependency 'spree_auth_devise'
+  s.add_dependency 'spree_core', '~> 3.0.4'
 
-  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'rspec-rails', "~> 3.1.0"
   s.add_development_dependency 'rspec-activemodel-mocks'
@@ -32,5 +31,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'poltergeist'
   s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'simplecov'
-  
+
 end
