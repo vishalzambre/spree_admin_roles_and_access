@@ -16,6 +16,7 @@ module Spree
         ability(role, user)
       end
 
+
       Ability.abilities.each do |clazz|
         ability = clazz.send(:new, user)
         @rules = rules + ability.send(:rules)

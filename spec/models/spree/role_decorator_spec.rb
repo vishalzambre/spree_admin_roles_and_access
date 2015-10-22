@@ -11,7 +11,7 @@ RSpec.describe Spree::Role, type: :model  do
   before(:each) do
     role1.permissions = [permission1, permission2]
   end
-  
+
   describe 'Association' do
     it { expect(subject).to have_and_belong_to_many(:permissions).class_name('Spree::Permission') }
     it "should return permissions on the basis of ascending order of priority" do
@@ -30,12 +30,12 @@ RSpec.describe Spree::Role, type: :model  do
     end
   end
 
-  describe 'has_permission?' do
-    it "should has_permission to manage all" do
-      expect(role1.has_permission?('can-manage-all')).to  eq(true)
+  describe 'permission?' do
+    it "should permission to manage all" do
+      expect(role1.permission?('can-manage-all')).to  eq(true)
     end
-    it "should not has_permission to manage products" do
-      expect(role1.has_permission?('can-manage-spree/products')).to  eq(false)
+    it "should not permission to manage products" do
+      expect(role1.permission?('can-manage-spree/products')).to  eq(false)
     end
   end
 
