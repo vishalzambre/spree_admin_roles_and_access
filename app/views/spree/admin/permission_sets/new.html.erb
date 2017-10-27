@@ -1,6 +1,13 @@
+<%= render 'spree/admin/shared/configuration_menu' %>
+
 <% content_for :page_title do %>
   <%= Spree.t(:new_permission_set) %>
 <% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_permission_sets_list), collection_url, :icon => 'arrow-left' %></li>
+<% end if can? :admin, Spree::PermissionSet %>
+
 
 <%= form_for [:admin, @permission_set], html: { class: 'form-inline centered-floating-buttons' } do |f| %>
   <div class="form-fields-group">

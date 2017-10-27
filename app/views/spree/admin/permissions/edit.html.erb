@@ -1,6 +1,12 @@
+<%= render 'spree/admin/shared/configuration_menu' %>
+
 <% content_for :page_title do %>
   <%= Spree.t(:editing_resource, resource: Spree::Permission.model_name.human) %>
 <% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_permissions_list), collection_url, :icon => 'arrow-left' %></li>
+<% end if can? :admin, Spree::Permission %>
 
 <%= form_for [:admin, @permission] do |f| %>
   <fieldset>
