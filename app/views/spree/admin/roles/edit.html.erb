@@ -1,6 +1,12 @@
+<%= render 'spree/admin/shared/configuration_menu' %>
+
 <% content_for :page_title do %>
   <%= link_to Spree.t(:roles), spree.admin_roles_url %> /
   <%= @role.name.capitalize %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_roles_list), collection_url, :icon => 'arrow-left' %></li>
 <% end %>
 
 <%= render partial: 'spree/shared/error_messages', locals: { target: @role } %>

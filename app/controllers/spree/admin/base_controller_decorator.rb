@@ -17,11 +17,12 @@ Spree::Admin::BaseController.class_eval do
   end
 
   private
-    def unauthorized
-      redirect_unauthorized_access
-    end
 
-    def new_action?
-      NEW_ACTIONS.include?(params[:action].to_sym)
-    end
+  def unauthorized
+    redirect_unauthorized_access
+  end
+
+  def new_action?
+    NEW_ACTIONS.include?(params[:action].to_sym)
+  end
 end

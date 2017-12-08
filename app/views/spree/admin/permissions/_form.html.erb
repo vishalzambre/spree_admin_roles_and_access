@@ -18,6 +18,7 @@
     </div>
 
     <ul class="list-group collapse" id="permission-example">
+      <li class="list-group-item">can-admin-spree/product - can view read only products under admin/li>
       <li class="list-group-item">can-manage-spree/product - can perform every action on Spree::Product but not on any other model or subject.</li>
       <li class="list-group-item">can-update-all - can update all models or subjects.</li>
       <li class="list-group-item">can-update-spree/product - can update only products, and not users, orders and other things.</li>
@@ -28,26 +29,44 @@
 </div>
 
 <div data-hook="admin_permission_form_fields">
-  <div data-hook="permission_title" class="form-group">
-    <%= f.label :title, Spree.t(:permission_title) %> <span class="required">*</span>
-    <%= f.text_field :title, class: 'form-control' %>
-    <a href="#permission-writing-guide" class="help-block">help</a>
-  </div>
-  <div data-hook="permission_description" class="form-group">
-    <%= f.label :description, Spree.t(:permission_description) %>
-    <%= f.text_field :description, class: 'form-control', placeholder: 'This allows the permitted user to..' %>
-  </div>
-  <div data-hook="permission_priority" class="form-group">
-    <%= f.label :priority, Spree.t(:permission_priority) %> <span class="required">*</span>
-    <%= f.number_field :priority, in: 0..9, step: 1, class: 'form-control' %>
-    <p class="help-block"><%= Spree.t(:permission_priority_help) %></p>
-  </div>
-  <div data-hook="permission_visible" class="checkbox">
-    <label>
-      <%= f.check_box :visible, value: true %><%= Spree.t(:permission_visible) %>
-      <p class="help-block"><%= Spree.t(:permission_visible_help) %></p>
-    </label>
+  <div data-hook="admin_permission_form_fields_left" class="six columns alpha">
+    <%= f.field_container :title do %>
+      <%= f.label :title, Spree.t(:permission_title) %> <span class="required">*</span>
+      <a href="#permission-writing-guide" class="help-block"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+      <%= f.text_field :title, class: 'fullwidth' %>
+    <% end %>
+
+    <%= f.field_container :priority do %>
+      <%= f.label :priority, Spree.t(:permission_priority) %> <span class="required">*</span>
+      <div class="tooltip">
+        <i class="fa fa-info-circle" aria-hidden="true"></i>
+        <span class="tooltiptext">
+          <%= Spree.t(:permission_priority_help) %>
+        </span>
+      </div>
+      <%= f.number_field :priority, in: 0..9, step: 1, class: 'fullwidth' %>
+    <% end %>
   </div>
 
+  <div data-hook="admin_permission_form_fields_right" class="omega five columns">
+    <%= f.field_container :description do %>
+      <%= f.label :description, Spree.t(:permission_description) %>
+      <a href="#permission-writing-guide" class="help-block"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+      <%= f.text_area :description, class: 'fullwidth', placeholder: 'This allows the permitted user to..' %>
+    <% end %>
+
+    <%= f.field_container :visible do %>
+      <%= f.label :visible do %>
+        <%= f.check_box :visible %> <%= Spree.t(:permission_visible) %>
+        <div class="tooltip">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          <span class="tooltiptext">
+            <%= Spree.t(:permission_visible_help) %>
+          </span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <div data-hook="additional_permission_fields"></div>
 </div>
+<div class="clearfix"></div>

@@ -13,3 +13,10 @@ Deface::Override.new(
   text: '<%= configurations_sidebar_menu_item(Spree.t(:permission_sets), spree.admin_permission_sets_path) if can? :manage, Spree::PermissionSet %>
 '
 )
+
+Deface::Override.new(
+  virtual_path: 'spree/admin/shared/_configuration_menu',
+  name: 'add_roles_to_admin_configuration_sidebar',
+  insert_bottom: '[data-hook="admin_configurations_sidebar_menu"]',
+  text: '<%= configurations_sidebar_menu_item Spree.t(:roles), admin_roles_path %>'
+)
